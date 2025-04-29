@@ -23,19 +23,25 @@ public class ThreadServidor implements Runnable {
 
                 OutputStreamWriter saida = new OutputStreamWriter(cliente.getOutputStream(), "UTF-8");
 
-                String mensagem = entrada.readLine();
+                while (true){
 
-                System.out.println("ip: "+ cliente.getInetAddress() + "\nMensagem: " + mensagem);
+                    String mensagem = entrada.readLine();
 
-                saida.write("Ola. sou o servidor\n");
-                saida.flush();
+                    System.out.println("ip: "+ cliente.getInetAddress() + "\nMensagem: " + mensagem);
+                    if (mensagem.equals("fim")){
+                        break;
+                    }
+
+                    saida.write(mensagem + "\n");
+                    saida.flush();
+
+
+                }
+
 
         } catch (Exception e) {
                 System.out.printf("Erro: "+e.toString());
             }
-
-
-
         }
     }
 }
