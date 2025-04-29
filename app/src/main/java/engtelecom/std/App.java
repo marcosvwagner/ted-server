@@ -20,9 +20,9 @@ public class App {
 
             while (true){
                 //aguardando
-                Socket cliente = serverSocket.accept();
+                Socket clientSocket = serverSocket.accept();
 
-                Thread t = new Thread(new ThreadServidor(cliente));
+                Thread t = new Thread(new ThreadServidor(clientSocket));
 
                  //dispara thread
                 t.start();
